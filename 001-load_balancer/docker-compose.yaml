@@ -1,0 +1,28 @@
+services:
+  load_balancer:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./node-00-load_balancer/web/:/var/www/html/
+      - ./node-00-load_balancer/config/nginx.conf:/etc/nginx/nginx.conf
+
+  web_1:
+    image: nginx:alpine
+    volumes:
+      - ./node-01-web/web/:/var/www/html/
+      - ./node-01-web/config/nginx.conf:/etc/nginx/nginx.conf
+    
+  web_2:
+    image: nginx:alpine
+    volumes:
+      - ./node-02-web/web/:/var/www/html/
+      - ./node-02-web/config/nginx.conf:/etc/nginx/nginx.conf
+
+  web_3:
+    image: nginx:alpine
+    volumes:
+      - ./node-03-web/web/:/var/www/html/
+      - ./node-03-web/config/nginx.conf:/etc/nginx/nginx.conf
+
+  
