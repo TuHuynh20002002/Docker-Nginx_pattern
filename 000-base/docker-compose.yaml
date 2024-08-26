@@ -1,12 +1,8 @@
 services:
   web:
-    image: ubuntu:noble
+    image: nginx:alpine
     ports:
       - "8080:80"
     volumes:
-      - ./node-00-web/web/:/var/www/html/
-      - ./node-00-web/config/:/etc/nginx/
-      - ./node-00-web/setup.sh:/root/setup.sh
-    working_dir: /root/
-    command: > 
-      bash ./setup.sh
+      - ./node-00-web/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./node-00-web/config/conf.d/:/etc/nginx/conf.d/
